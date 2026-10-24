@@ -1,0 +1,727 @@
+<title>V Dhankude Farm Homepage Directions</title>
+<meta name="description" content="Two homepage design directions for V Dhankude Farm, rebuilt around the final logo and stationery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout concept: a theme-aware review shell around a full homepage mock.
+   Both directions share the same markup and the same real logo; each direction is only
+   a token set plus a few layout rules, mirroring the planned src/brand layer. */
+
+/* ---------- Review shell tokens (follow viewer theme) ---------- */
+:root {
+  --ch-bg: #EEF2EC; --ch-panel: #FFFFFF; --ch-fg: #15211A; --ch-muted: #5A675E;
+  --ch-line: #D4DCD3; --ch-accent: #004B23; --ch-accent-fg: #FFFFFF;
+  --ch-font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ch-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ch-bg: #0F1511; --ch-panel: #18201B; --ch-fg: #E5ECE6; --ch-muted: #9AA89E;
+    --ch-line: #2B362E; --ch-accent: #99CE13; --ch-accent-fg: #00381B; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ch-bg: #0F1511; --ch-panel: #18201B; --ch-fg: #E5ECE6; --ch-muted: #9AA89E;
+  --ch-line: #2B362E; --ch-accent: #99CE13; --ch-accent-fg: #00381B; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ch-bg); color: var(--ch-fg); font-family: var(--ch-font); }
+
+/* ---------- Review shell ---------- */
+.chrome { padding-inline: 16px; padding-block: 18px 0; }
+.chrome-in { max-width: 1280px; margin-inline: auto; display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; justify-content: space-between; }
+.chrome h1 { margin: 0; font-size: 17px; font-weight: 800; letter-spacing: -.01em; }
+.chrome p { margin: 2px 0 0; font-size: 13px; color: var(--ch-muted); }
+.seg { display: inline-flex; padding: 4px; gap: 4px; background: var(--ch-panel); border: 1px solid var(--ch-line); border-radius: 10px; }
+.seg button { font: inherit; font-size: 14px; font-weight: 700; border: 0; background: transparent; color: var(--ch-muted); padding: 9px 14px; border-radius: 7px; cursor: pointer; }
+.seg button[aria-selected="true"] { background: var(--ch-accent); color: var(--ch-accent-fg); }
+.seg button:focus-visible { outline: 2px solid var(--ch-accent); outline-offset: 2px; }
+
+.kit { padding-inline: 16px; padding-block: 18px; }
+.kit-in { max-width: 1280px; margin-inline: auto; background: var(--ch-panel); border: 1px solid var(--ch-line); border-radius: 14px; padding: 22px; display: grid; grid-template-columns: 1.1fr 1fr 1.1fr; gap: 26px; }
+.kit-in > * { min-width: 0; }
+.kit h2 { margin: 0 0 6px; font-size: 20px; letter-spacing: -.01em; }
+.kit .lede { margin: 0 0 12px; color: var(--ch-muted); font-size: 14px; line-height: 1.55; }
+.kit h3 { margin: 0 0 10px; font-family: var(--ch-mono); font-size: 11.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ch-muted); }
+.kit ul.fit { margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.6; }
+.swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.sw { border: 1px solid var(--ch-line); border-radius: 8px; overflow: hidden; font-size: 11.5px; }
+.sw i { display: block; height: 36px; }
+.sw span { display: block; padding: 5px 7px; font-family: var(--ch-mono); color: var(--ch-muted); line-height: 1.35; }
+.sw b { display: block; font-family: var(--ch-font); color: var(--ch-fg); font-weight: 700; }
+.logos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.logo-tile { border-radius: 8px; border: 1px solid var(--ch-line); padding: 14px 12px; display: grid; gap: 8px; justify-items: center; align-content: center; min-height: 76px; }
+.logo-tile.wide { grid-column: 1 / -1; }
+.logo-tile small { font-family: var(--ch-mono); font-size: 10.5px; letter-spacing: .06em; }
+.logo-tile svg { display: block; max-width: 100%; }
+.type-spec { margin-top: 14px; }
+.type-spec .big { font-size: 28px; line-height: 1.1; margin-bottom: 4px; }
+.type-spec .small { font-size: 13px; color: var(--ch-muted); }
+.note { margin: 12px 0 0; font-size: 12.5px; color: var(--ch-muted); line-height: 1.5; }
+.note code { font-family: var(--ch-mono); font-size: 12px; }
+.dir-only { display: none; }
+body[data-dir="a"] .dir-a, body[data-dir="b"] .dir-b { display: block; }
+
+.frame-label { max-width: 1280px; margin: 0 auto; padding-inline: 16px; font-family: var(--ch-mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ch-muted); padding-block: 4px 10px; }
+.frame { padding-inline: 16px; padding-block: 0 40px; }
+.frame-in { max-width: 1280px; margin-inline: auto; border-radius: 14px; overflow: hidden; border: 1px solid var(--ch-line); box-shadow: 0 20px 50px -30px rgba(0,0,0,.35); }
+
+@media (max-width: 1000px) { .kit-in { grid-template-columns: 1fr 1fr; } .kit-in > :first-child { grid-column: 1 / -1; } }
+@media (max-width: 640px) { .kit-in { grid-template-columns: 1fr; padding: 16px; } .swatches { grid-template-columns: repeat(2, 1fr); } }
+
+/* =====================================================================
+   SITE MOCK. Brand colours come from the logo (stationery PDF):
+   forest #00381B · wordmark green #004B23 · leaf green #009E3C · lime #99CE13 · graphite #454646
+   The mock is a deliberately light website in either viewer theme; all colours set explicitly.
+   ===================================================================== */
+.site[data-dir="a"] {
+  --bg: #F7F9F4; --surface: #FFFFFF; --tint: #EEF5E4; --primary: #004B23; --deep: #00381B;
+  --leaf: #009E3C; --lime: #99CE13; --text: #1E2A22; --muted: #536156; --line: #DCE5D6; --heading: #00381B;
+  --inv-bg: #00381B; --inv-text: #E9F2EA; --inv-muted: #A8C2AE;
+  --btn-bg: #004B23; --btn-fg: #FFFFFF; --btn-hover: #00381B;
+  --eyebrow: #009E3C; --inv-eyebrow: #99CE13;
+  --font-display: "Montserrat", system-ui, "Segoe UI", sans-serif;
+  --font-body: "Manrope", system-ui, "Segoe UI", sans-serif;
+  --font-label: "Montserrat", system-ui, sans-serif;
+  --display-weight: 700; --display-track: -0.02em;
+  --r-media: 22px; --r-btn: 999px; --r-card: 18px;
+  --ph-a: #E1ECD8; --ph-b: #D5E4CB; --ph-ink: #004B23;
+}
+.site[data-dir="b"] {
+  --bg: #FFFFFF; --surface: #FFFFFF; --tint: #F2F5F1; --primary: #004B23; --deep: #00381B;
+  --leaf: #009E3C; --lime: #99CE13; --text: #17211B; --muted: #536057; --line: #DDE3DE; --heading: #00381B;
+  --inv-bg: #00381B; --inv-text: #E9F2EA; --inv-muted: #A3BCA9;
+  --btn-bg: #99CE13; --btn-fg: #00381B; --btn-hover: #AEDD35;
+  --eyebrow: #004B23; --inv-eyebrow: #99CE13;
+  --font-display: "Montserrat", system-ui, "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, "Segoe UI", sans-serif;
+  --font-label: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --display-weight: 800; --display-track: -0.035em;
+  --r-media: 6px; --r-btn: 6px; --r-card: 6px;
+  --ph-a: #DEE6DF; --ph-b: #D2DCD4; --ph-ink: #004B23;
+}
+
+/* ---------- Shared site base ---------- */
+.site { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.site a { color: inherit; }
+.site .wrap { max-width: 1200px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
+.site .sec { padding-block: clamp(56px, 8vw, 104px); position: relative; }
+.site .tint { background: var(--tint); }
+.site .inv { background: var(--inv-bg); color: var(--inv-text); }
+.site h2, .site h3, .site .h1 { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-track); color: var(--heading); text-wrap: balance; margin: 0; }
+.site .inv h2, .site .inv h3 { color: #FFFFFF; }
+.site .h1 { font-size: clamp(38px, 5.6vw, 68px); line-height: 1.04; }
+.site .h1 .soft { font-weight: 400; }
+.site h2 { font-size: clamp(28px, 3.7vw, 44px); line-height: 1.1; }
+.site h3 { font-size: 20px; line-height: 1.25; letter-spacing: -.01em; }
+.site p { margin: 0; }
+.site .lead { font-size: clamp(17px, 1.6vw, 19px); color: var(--muted); max-width: 60ch; }
+.site .inv .lead, .site .inv .muted { color: var(--inv-muted); }
+.site .muted { color: var(--muted); }
+.site .eyebrow { font-family: var(--font-label); font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--eyebrow); display: inline-flex; align-items: center; gap: 10px; }
+.site .inv .eyebrow { color: var(--inv-eyebrow); }
+.site .head { display: grid; gap: 14px; max-width: 760px; margin-bottom: clamp(32px, 4vw, 52px); }
+
+.site .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.site .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 24px; border-radius: var(--r-btn); font-weight: 700; font-size: 15.5px; text-decoration: none; border: 1.5px solid transparent; transition: background-color .18s ease, border-color .18s ease, transform .18s ease; cursor: pointer; font-family: var(--font-body); }
+.site .btn:hover { transform: translateY(-1px); }
+.site .btn:focus-visible { outline: 3px solid var(--leaf); outline-offset: 3px; }
+.site .btn-primary { background: var(--btn-bg); color: var(--btn-fg); }
+.site .btn-primary:hover { background: var(--btn-hover); }
+.site .btn-secondary { border-color: var(--primary); color: var(--primary); background: transparent; }
+.site .inv .btn-secondary { border-color: rgba(255,255,255,.55); color: #FFFFFF; }
+.site .inv .btn-primary { background: var(--lime); color: var(--deep); }
+.site .link { font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; gap: 8px; align-items: center; border-bottom: 2px solid var(--lime); padding-bottom: 2px; justify-self: start; }
+.site .arrow { width: 16px; height: 16px; flex: none; }
+
+/* image placeholder: in the app this is <SiteImage>/<ImagePlaceholder> */
+.site .ph { position: relative; border-radius: var(--r-media); overflow: hidden; background: repeating-linear-gradient(135deg, var(--ph-a) 0 14px, var(--ph-b) 14px 28px); display: flex; align-items: flex-end; max-width: 100%; }
+.site .ph > span { margin: 14px; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11.5px; line-height: 1.4; color: var(--ph-ink); background: rgba(255,255,255,.9); padding: 6px 9px; border-radius: 6px; max-width: calc(100% - 28px); position: relative; z-index: 1; }
+
+/* the "D" watermark, borrowed from the letterhead */
+.site .wm { position: absolute; pointer-events: none; color: var(--deep); opacity: .05; }
+
+/* ---------- Header ---------- */
+.site .s-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.site .s-header .wrap { display: flex; align-items: center; gap: 24px; min-height: 78px; }
+.site .brand { display: inline-flex; align-items: center; text-decoration: none; flex: none; }
+.site .brand svg { display: block; height: 46px; width: auto; aspect-ratio: 199.6 / 39; }
+.site .nav { display: flex; gap: 2px; margin-left: auto; }
+.site .nav a { text-decoration: none; font-size: 15px; font-weight: 600; color: var(--text); padding: 8px 11px; border-radius: 8px; }
+.site .nav a[aria-current="page"] { color: var(--primary); box-shadow: inset 0 -2px 0 var(--lime); border-radius: 0; }
+.site .nav a:hover { background: var(--tint); }
+.site .s-header .btn { min-height: 44px; padding: 0 18px; font-size: 14.5px; }
+.site .menu-btn { display: none; margin-left: auto; width: 46px; height: 46px; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; cursor: pointer; align-items: center; justify-content: center; color: var(--text); }
+.site .mobile-nav { display: none; }
+
+/* ---------- Hero ---------- */
+.site .hero { position: relative; overflow: hidden; }
+.site .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: clamp(40px, 6vw, 88px); position: relative; }
+.site .hero-copy { display: grid; gap: 22px; align-content: center; min-width: 0; position: relative; z-index: 1; }
+.site .hero-media { aspect-ratio: 4 / 5; }
+.site .hero .wm { width: min(560px, 70vw); aspect-ratio: 1; left: -140px; top: -60px; }
+.site .hero-strip { display: none; }
+
+/* ---------- What is ---------- */
+.site .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
+.site .split > * { min-width: 0; }
+.site .split .ph { aspect-ratio: 5 / 4; }
+.site .split-copy { display: grid; gap: 18px; }
+.site .places { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 4px 0 6px; list-style: none; }
+.site .places li { font-size: 14.5px; font-weight: 600; padding: 7px 14px; border-radius: 999px; background: var(--surface); color: var(--deep); border: 1px solid var(--line); }
+
+/* ---------- Why ---------- */
+.site .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; padding: 0; margin: 0; list-style: none; }
+.site .why li { padding-block: 26px; border-top: 1px solid var(--line); display: grid; gap: 10px; align-content: start; }
+.site .why .ic { width: 42px; height: 42px; border-radius: 12px 12px 12px 2px; background: var(--tint); color: var(--leaf); display: grid; place-items: center; }
+.site .why .ic svg { width: 22px; height: 22px; }
+.site .why p { color: var(--muted); font-size: 16px; }
+
+/* ---------- Scale ---------- */
+.site .scales { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; padding: 0; margin: 0; list-style: none; }
+.site .scale { display: grid; gap: 12px; text-decoration: none; }
+.site .scale .ph { aspect-ratio: 3 / 4; }
+.site .scale h3 { font-size: 21px; }
+.site .scale p { font-size: 15px; color: var(--muted); }
+.site .meter { display: none; }
+.site .scale-msg { margin-top: 36px; font-family: var(--font-display); font-weight: 600; font-size: clamp(19px, 2.1vw, 24px); color: var(--deep); max-width: 44ch; letter-spacing: -.01em; }
+
+/* ---------- Journey ---------- */
+.site .journey { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; padding: 0; margin: 0; list-style: none; }
+.site .journey li { display: grid; gap: 8px; align-content: start; position: relative; }
+.site .journey .dot { width: 18px; height: 18px; border-radius: 50%; background: var(--lime); border: 4px solid var(--surface); box-shadow: 0 0 0 2px var(--leaf); margin-bottom: 10px; position: relative; z-index: 1; }
+.site .journey li:not(:last-child)::before { content: ""; position: absolute; top: 8px; left: 20px; right: -20px; height: 2px; background: var(--line); }
+.site .journey .num { display: none; }
+.site .journey h3 { font-size: 23px; }
+.site .journey p { font-size: 15.5px; color: var(--muted); }
+
+/* ---------- Visit ---------- */
+.site .checks { list-style: none; padding: 0; margin: 4px 0 8px; display: grid; gap: 12px; }
+.site .checks li { display: flex; gap: 12px; align-items: flex-start; }
+.site .checks svg { width: 22px; height: 22px; flex: none; margin-top: 2px; color: var(--leaf); }
+
+/* ---------- Training ---------- */
+.site .two { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
+.site .two > * { min-width: 0; }
+.site .topics { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+.site .topics li { padding-block: 16px; border-bottom: 1px solid var(--line); font-weight: 600; display: flex; gap: 12px; align-items: center; }
+.site .topics li::before { content: ""; width: 9px; height: 9px; border-radius: 9px 9px 9px 1px; background: var(--lime); flex: none; }
+.site .placeholder-note { font-size: 14px; color: var(--muted); margin-top: 18px; }
+
+/* ---------- Setup ---------- */
+.site #setup { overflow: hidden; }
+.site #setup .wm { color: #FFFFFF; opacity: .06; width: 520px; aspect-ratio: 1; right: -120px; bottom: -160px; }
+.site .setup-cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 0; margin: 0 0 32px; list-style: none; position: relative; }
+.site .setup-cats a { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 18px 20px; border-radius: var(--r-card); text-decoration: none; font-weight: 700; border: 1px solid rgba(255,255,255,.24); color: #FFFFFF; transition: background-color .18s ease, border-color .18s ease; }
+.site .setup-cats a:hover { background: rgba(255,255,255,.08); border-color: var(--lime); }
+.site #setup .wrap { position: relative; }
+
+/* ---------- Smart ---------- */
+.site .badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-label); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; border: 1.5px dashed var(--leaf); color: var(--primary); background: #F4FAEA; justify-self: start; }
+.site .smart { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.site .smart > * { min-width: 0; }
+.site .smart-copy { display: grid; gap: 18px; }
+.site .caps { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.site .caps li { font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); }
+.site .panel { border-radius: var(--r-card); background: var(--surface); border: 1px solid var(--line); padding: 22px; }
+.site .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+.site .panel-head strong { color: var(--heading); font-size: 15px; }
+.site .params { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.site .param { border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 4px; background: var(--bg); }
+.site .param .k { font-size: 13px; color: var(--muted); font-weight: 600; }
+.site .param .v { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 20px; color: var(--heading); font-variant-numeric: tabular-nums; }
+.site .param .v small { font-size: 12px; color: var(--muted); margin-left: 4px; }
+.site .panel-foot { margin-top: 14px; font-size: 13px; color: var(--muted); }
+
+/* ---------- Final CTA ---------- */
+.site .final { display: grid; grid-template-columns: 1.2fr .8fr; gap: 32px; align-items: end; }
+.site .final > * { min-width: 0; }
+.site .final .head { margin: 0; }
+.site[data-dir="a"] #final .head::before { content: ""; width: 56px; height: 4px; background: var(--lime); border-radius: 2px; }
+
+/* ---------- Footer ---------- */
+.site .s-footer { background: var(--inv-bg); color: var(--inv-text); padding-block: 64px 28px; }
+.site .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; }
+.site .f-grid > * { min-width: 0; }
+.site .s-footer h4 { margin: 0 0 14px; font-family: var(--font-label); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--inv-muted); font-weight: 700; }
+.site .s-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 15px; }
+.site .s-footer a { text-decoration: none; color: var(--inv-text); }
+.site .s-footer a:hover { text-decoration: underline; }
+.site .s-footer .brand svg { height: 58px; }
+.site .f-desc { margin-top: 18px; font-size: 15px; color: var(--inv-muted); max-width: 38ch; }
+.site .f-bottom { margin-top: 48px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.14); display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-size: 13.5px; color: var(--inv-muted); }
+
+/* logo on dark: white D, colour leaves, white wordmark (as on the business card) */
+.logo-inverse { --logo-d: #FFFFFF; --logo-ink: #FFFFFF; --logo-sub: rgba(255,255,255,.78); }
+
+/* =====================================================================
+   DIRECTION B: layout overrides (same markup, different composition)
+   ===================================================================== */
+.site[data-dir="b"] .eyebrow { font-weight: 500; font-size: 12px; letter-spacing: .14em; }
+.site[data-dir="b"] .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--lime); }
+.site[data-dir="b"] .s-header { background: color-mix(in srgb, #FFFFFF 94%, transparent); }
+.site[data-dir="b"] .hero .wm { display: none; }
+
+/* full-bleed hero with the business-card gradient behind the photo overlay */
+.site[data-dir="b"] .hero { min-height: clamp(560px, 76vw, 700px); display: flex; flex-direction: column; justify-content: flex-end; }
+.site[data-dir="b"] .hero-grid { grid-template-columns: minmax(0, 780px); padding-block: 120px 40px; position: static; width: 100%; }
+.site[data-dir="b"] .hero-media { position: absolute; inset: 0; aspect-ratio: auto; border-radius: 0; background: repeating-linear-gradient(135deg, #1F4A2E 0 16px, #1A4229 16px 32px); }
+.site[data-dir="b"] .hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,56,27,.12) 0%, rgba(0,56,27,.6) 55%, rgba(0,40,19,.92) 100%); }
+.site[data-dir="b"] .hero-media > span { position: absolute; top: 14px; right: 0; }
+.site[data-dir="b"] .hero-copy .h1 { color: #FFFFFF; }
+.site[data-dir="b"] .hero-copy .lead { color: #D2E2D6; }
+.site[data-dir="b"] .hero-copy .eyebrow { color: var(--lime); }
+.site[data-dir="b"] .hero-copy .btn-secondary { border-color: rgba(255,255,255,.6); color: #FFFFFF; }
+.site[data-dir="b"] .hero-strip { display: block; position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,.18); }
+.site[data-dir="b"] .hero-strip ol { list-style: none; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); }
+.site[data-dir="b"] .hero-strip li { padding: 18px 16px 22px 0; color: #FFFFFF; font-weight: 600; font-size: 15px; display: grid; gap: 2px; }
+.site[data-dir="b"] .hero-strip li span { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11.5px; color: var(--lime); font-weight: 500; }
+
+.site[data-dir="b"] .places li { border-radius: 4px; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; font-weight: 500; }
+
+/* why: hairline grid, no cards */
+.site[data-dir="b"] .why { gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.site[data-dir="b"] .why li { border-top: 0; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 28px; }
+.site[data-dir="b"] .why .ic { border-radius: 6px; background: transparent; border: 1px solid var(--line); }
+
+/* scale: framed tiles + size meter */
+.site[data-dir="b"] .scale { border: 1px solid var(--line); border-radius: var(--r-card); padding: 12px 12px 18px; background: var(--surface); }
+.site[data-dir="b"] .scale .ph { aspect-ratio: 4 / 3; }
+.site[data-dir="b"] .scale h3, .site[data-dir="b"] .scale p { padding-inline: 4px; }
+.site[data-dir="b"] .meter { display: flex; gap: 4px; padding-inline: 4px; align-items: flex-end; height: 18px; }
+.site[data-dir="b"] .meter i { width: 10px; background: var(--line); border-radius: 1px; }
+.site[data-dir="b"] .meter i:nth-child(1) { height: 6px; } .site[data-dir="b"] .meter i:nth-child(2) { height: 10px; }
+.site[data-dir="b"] .meter i:nth-child(3) { height: 14px; } .site[data-dir="b"] .meter i:nth-child(4) { height: 18px; }
+.site[data-dir="b"] .meter i.on { background: var(--leaf); }
+
+/* journey: numbered columns (it is a real sequence) */
+.site[data-dir="b"] .journey { gap: 0; }
+.site[data-dir="b"] .journey li { border-top: 2px solid var(--deep); padding: 18px 20px 0 0; }
+.site[data-dir="b"] .journey li::before { display: none; }
+.site[data-dir="b"] .journey .dot { display: none; }
+.site[data-dir="b"] .journey .num { display: block; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px; color: var(--leaf); font-weight: 500; }
+
+/* visit turns dark in B */
+.site[data-dir="b"] #visit { background: var(--inv-bg); color: var(--inv-text); }
+.site[data-dir="b"] #visit h2 { color: #FFFFFF; }
+.site[data-dir="b"] #visit .lead { color: var(--inv-muted); }
+.site[data-dir="b"] #visit .eyebrow { color: var(--lime); }
+.site[data-dir="b"] #visit .checks svg { color: var(--lime); }
+.site[data-dir="b"] #visit .split .ph { order: 2; background: repeating-linear-gradient(135deg, #1F4A2E 0 14px, #1A4229 14px 28px); }
+
+.site[data-dir="b"] .topics li::before { border-radius: 1px; width: 12px; height: 2px; background: var(--leaf); }
+
+/* setup: the business-card back, gradient + outlined D */
+.site[data-dir="b"] #setup { background: linear-gradient(120deg, #00381B 0%, #004B23 45%, #00873A 100%); }
+.site[data-dir="b"] #setup .wm { opacity: .09; }
+
+/* smart: dark concept dashboard */
+.site[data-dir="b"] .panel { background: #00381B; border-color: #00381B; color: #DCE8DF; }
+.site[data-dir="b"] .panel-head { color: #A3BCA9; border-bottom: 1px solid #1D4D31; padding-bottom: 14px; }
+.site[data-dir="b"] .panel-head strong { color: #FFFFFF; font-family: "JetBrains Mono", ui-monospace, monospace; font-weight: 500; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+.site[data-dir="b"] .param { background: #04442A; border-color: #1D4D31; border-radius: 4px; }
+.site[data-dir="b"] .param .k { color: #A3BCA9; font-family: "JetBrains Mono", ui-monospace, monospace; font-weight: 500; font-size: 12px; }
+.site[data-dir="b"] .param .v { color: #FFFFFF; }
+.site[data-dir="b"] .param .v small { color: #A3BCA9; }
+.site[data-dir="b"] .panel-foot { color: #A3BCA9; }
+.site[data-dir="b"] .badge { border-radius: 4px; }
+.site[data-dir="b"] .caps li { border-radius: 4px; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 12.5px; font-weight: 500; }
+
+/* final CTA: dark band in B */
+.site[data-dir="b"] #final { background: var(--deep); }
+.site[data-dir="b"] #final h2 { color: #FFFFFF; }
+.site[data-dir="b"] #final .lead { color: var(--inv-muted); }
+.site[data-dir="b"] #final .eyebrow { color: var(--lime); }
+.site[data-dir="b"] #final .btn-secondary { border-color: rgba(255,255,255,.55); color: #FFFFFF; }
+.site[data-dir="b"] .s-footer { border-top: 1px solid #1D4D31; }
+
+/* ---------- Responsive (designed per section, not just shrunk) ---------- */
+@media (max-width: 1120px) {
+  .site .nav, .site .s-header .btn { display: none; }
+  .site .menu-btn { display: inline-flex; }
+  .site .mobile-nav[data-open="true"] { display: grid; gap: 4px; padding: 8px clamp(16px, 4vw, 40px) 20px; border-top: 1px solid var(--line); background: var(--bg); }
+  .site .mobile-nav a { text-decoration: none; font-weight: 600; padding: 12px 4px; border-bottom: 1px solid var(--line); color: var(--text); }
+  .site .mobile-nav .btn { margin-top: 12px; border-bottom: 0; color: var(--btn-fg); }
+}
+@media (max-width: 900px) {
+  .site .hero-grid, .site .split, .site .two, .site .smart, .site .final { grid-template-columns: 1fr; }
+  .site[data-dir="a"] .hero-media { aspect-ratio: 4 / 3; order: -1; }
+  .site .why { grid-template-columns: 1fr 1fr; }
+  .site .scales { grid-template-columns: 1fr 1fr; }
+  .site .journey { grid-template-columns: 1fr; gap: 0; }
+  .site[data-dir="a"] .journey li { grid-template-columns: 18px 1fr; column-gap: 18px; padding-bottom: 24px; }
+  .site[data-dir="a"] .journey li > :not(.dot) { grid-column: 2; }
+  .site[data-dir="a"] .journey .dot { grid-row: 1 / span 2; margin: 6px 0 0; }
+  .site[data-dir="a"] .journey li:not(:last-child)::before { top: 26px; bottom: 0; left: 8px; right: auto; width: 2px; height: auto; }
+  .site[data-dir="b"] .journey li { padding: 16px 0 20px; display: grid; grid-template-columns: 44px 1fr; column-gap: 8px; }
+  .site[data-dir="b"] .journey li > :not(.num) { grid-column: 2; }
+  .site[data-dir="b"] .journey .num { grid-row: 1 / span 2; padding-top: 6px; }
+  .site .setup-cats { grid-template-columns: 1fr 1fr; }
+  .site[data-dir="b"] #visit .split .ph { order: 0; }
+  .site .split .ph { aspect-ratio: 16 / 10; }
+  .site .f-grid { grid-template-columns: 1fr 1fr; }
+  .site .f-grid > :first-child { grid-column: 1 / -1; }
+  .site[data-dir="b"] .hero-strip ol { grid-template-columns: repeat(5, auto); gap: 18px; overflow-x: auto; }
+}
+@media (max-width: 560px) {
+  .site { font-size: 16px; }
+  .site .why, .site .topics { grid-template-columns: 1fr; }
+  .site[data-dir="b"] .why li { padding: 22px 18px; }
+  .site .scales { gap: 12px; }
+  .site[data-dir="a"] .scale .ph { aspect-ratio: 1 / 1; }
+  .site .scale h3 { font-size: 18px; }
+  .site .scale p { font-size: 14px; }
+  .site .params { grid-template-columns: 1fr 1fr; }
+  .site .btns .btn { flex: 1 1 100%; }
+  .site .setup-cats { grid-template-columns: 1fr; }
+  .site .f-grid { grid-template-columns: 1fr; }
+  .site .s-header .wrap { min-height: 66px; }
+  .site .s-header .brand svg { height: 38px; }
+  .site[data-dir="b"] .hero-grid { padding-block: 96px 28px; }
+}
+@media (prefers-reduced-motion: reduce) { .site *, .site *::before, .site *::after { transition: none !important; } }
+</style>
+
+<!-- Logo symbols generated from the stationery PDF vectors. In the app: src/brand/assets/*.svg via <Logo /> -->
+<!--LOGO_SYMBOLS-->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="vdf-grad" gradientUnits="userSpaceOnUse" x1="366" y1="816" x2="404" y2="781"><stop offset="0" stop-color="#00381B"/><stop offset=".55" stop-color="#006A2E"/><stop offset="1" stop-color="#009A3C"/></linearGradient>
+<symbol id="vdf-mark" viewBox="0 0 39 39"><g transform="translate(-365.4 -23.9)"><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M385.0245 779.3271H365.8955C365.8955 786.191 369.5593 792.2395 375.0276 795.6162 375.5197 793.8935 376.4477 792.3504 377.6834 791.1147 379.5639 789.2342 382.1579 788.0661 385.0121 788.0624H385.0245 385.0251 385.0376C387.8915 788.0661 390.4855 789.2342 392.366 791.1147 394.2493 792.9984 395.4186 795.5972 395.4186 798.4559V798.4562H404.1539 395.4186V808.3463C395.4186 808.6243 395.193 808.85 394.914 808.85 392.0553 808.85 389.4565 807.681 387.5732 805.7976 386.4226 804.6468 385.5385 803.2286 385.0245 801.6474 384.5109 803.2286 383.6268 804.6468 382.4759 805.7976 380.5929 807.681 377.994 808.85 375.1347 808.85 374.8564 808.85 374.6307 808.6243 374.6307 808.3463V801.5482C369.383 804.9685 365.8955 810.8889 365.8955 817.5852H385.0245C395.5462 817.5852 404.1539 808.9778 404.1539 798.4562 404.1539 787.9346 395.5462 779.3271 385.0245 779.3271" style="fill:var(--logo-d,url(#vdf-grad))"/><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M375.6385 807.8287V798.4559C375.6385 795.8752 376.6946 793.5287 378.396 791.8274 379.986 790.2374 382.1391 789.2113 384.5208 789.0837V798.4568C384.5208 801.0374 383.4649 803.3837 381.7636 805.085 380.1736 806.675 378.0201 807.7014 375.6385 807.8287" style="fill:var(--logo-leaf1,#009E3C)"/><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M394.4109 798.4559V807.8287C392.0292 807.7014 389.8757 806.675 388.2858 805.085 386.5844 803.3837 385.5285 801.0374 385.5285 798.4568V789.0837C387.9099 789.2113 390.0634 790.2374 391.6534 791.8274 393.3547 793.5287 394.4109 795.8752 394.4109 798.4559" style="fill:var(--logo-leaf2,#99CE13)"/></g></symbol>
+<symbol id="vdf-full" viewBox="0 0 199.6 39"><g transform="translate(-365.4 -23.9)"><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M385.0245 779.3271H365.8955C365.8955 786.191 369.5593 792.2395 375.0276 795.6162 375.5197 793.8935 376.4477 792.3504 377.6834 791.1147 379.5639 789.2342 382.1579 788.0661 385.0121 788.0624H385.0245 385.0251 385.0376C387.8915 788.0661 390.4855 789.2342 392.366 791.1147 394.2493 792.9984 395.4186 795.5972 395.4186 798.4559V798.4562H404.1539 395.4186V808.3463C395.4186 808.6243 395.193 808.85 394.914 808.85 392.0553 808.85 389.4565 807.681 387.5732 805.7976 386.4226 804.6468 385.5385 803.2286 385.0245 801.6474 384.5109 803.2286 383.6268 804.6468 382.4759 805.7976 380.5929 807.681 377.994 808.85 375.1347 808.85 374.8564 808.85 374.6307 808.6243 374.6307 808.3463V801.5482C369.383 804.9685 365.8955 810.8889 365.8955 817.5852H385.0245C395.5462 817.5852 404.1539 808.9778 404.1539 798.4562 404.1539 787.9346 395.5462 779.3271 385.0245 779.3271" style="fill:var(--logo-d,url(#vdf-grad))"/><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M375.6385 807.8287V798.4559C375.6385 795.8752 376.6946 793.5287 378.396 791.8274 379.986 790.2374 382.1391 789.2113 384.5208 789.0837V798.4568C384.5208 801.0374 383.4649 803.3837 381.7636 805.085 380.1736 806.675 378.0201 807.7014 375.6385 807.8287" style="fill:var(--logo-leaf1,#009E3C)"/><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M394.4109 798.4559V807.8287C392.0292 807.7014 389.8757 806.675 388.2858 805.085 386.5844 803.3837 385.5285 801.0374 385.5285 798.4568V789.0837C387.9099 789.2113 390.0634 790.2374 391.6534 791.8274 393.3547 793.5287 394.4109 795.8752 394.4109 798.4559" style="fill:var(--logo-leaf2,#99CE13)"/><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M415.2988 797.0284 419.6186 807.7518H416.3559L413.9203 800.966 411.4845 807.7518H408.1606L412.4803 797.0284ZM424.9035 797.0292H428.978C432.8382 797.0292 435.09 799.327 435.09 802.4213V802.4519C435.09 805.5459 432.8688 807.7518 429.0395 807.7518H424.9035ZM427.875 799.6637V805.117H429.0854C430.8622 805.117 432.0417 804.1215 432.0417 802.406V802.3751C432.0417 800.6443 430.8622 799.6637 429.0854 799.6637ZM436.6222 797.0292H439.5937V801.1037H443.408V797.0292H446.3799V807.7518H443.408V803.7386H439.5937V807.7518H436.6222ZM447.4213 797.0292H450.5462L451.3122 798.9437H455.4482L456.2294 797.0292H459.4156L454.8509 807.8284H451.9862ZM452.1852 801.2571 453.3953 804.3055 454.5904 801.2571ZM460.4573 797.0292H463.3982V802.9114L467.9785 797.0292H470.5826V807.7518H467.6414V802.0843L463.2299 807.7518H460.4573ZM472.4821 797.0292H475.4537V799.8018L476.5414 801.0119 479.2374 797.0292H482.8068L478.6095 803.1413 482.6687 807.7518H479.1455L475.4537 803.4015V807.7518H472.4821ZM488.1526 796.83C491.2013 796.83 493.177 798.3465 493.177 801.8084V807.7518H490.1596V801.7166C490.1596 800.2154 489.3783 799.5107 488.1835 799.5107 486.9884 799.5107 486.2075 800.246 486.2075 801.7931V807.7518H483.1897V801.7319C483.1897 798.3771 485.1045 796.83 488.1526 796.83ZM494.9388 797.0292H499.0136C502.8738 797.0292 505.1256 799.327 505.1256 802.4213V802.4519C505.1256 805.5459 502.9044 807.7518 499.0748 807.7518H494.9388ZM497.9106 799.6637V805.117H499.1207C500.8975 805.117 502.077 804.1215 502.077 802.406V802.3751C502.077 800.6443 500.8975 799.6637 499.1207 799.6637ZM506.6575 797.0292H515.3581V799.5566H509.5984V801.2571H514.7453V803.6008H509.5984V805.2245H515.2816V807.7518H506.6575Z" style="fill:var(--logo-ink,#004B23)"/><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M529.3896 807.7518H521.6848V797.0292H522.8946V801.7013H528.7005V802.804H522.8946V806.6336H529.3896ZM535.6089 807.8284H534.4753L529.5886 797.0292H530.8296L532.101 799.863H537.9372L539.1933 797.0292H540.4955ZM537.4624 800.9354H532.5758L535.0266 806.404ZM551.4789 797.0292 548.1853 801.4076C548.604 801.4791 548.9921 801.6015 549.3495 801.7753 549.707 801.9488 550.0159 802.1659 550.2762 802.4261 550.5367 802.6866 550.7385 802.993 550.8814 803.3454 551.0242 803.6977 551.0957 804.0986 551.0957 804.5478 551.0957 805.0277 551.0038 805.4668 550.8201 805.86 550.6362 806.2532 550.3759 806.5905 550.0386 806.8711 549.7019 807.152 549.2959 807.3689 548.8209 807.5222 548.346 807.6753 547.8126 807.7518 547.2201 807.7518H542.6096V797.0292H543.8197V801.1956H546.8831L549.9927 797.0292ZM549.8855 804.4968C549.8855 804.1496 549.8167 803.8355 549.6786 803.5597 549.5411 803.2816 549.3495 803.0492 549.1018 802.8604 548.8566 802.6713 548.5657 802.5233 548.2261 802.4213 547.8891 802.319 547.5214 802.2679 547.1206 802.2679H543.8197V806.6336H547.1359C548.0065 806.6336 548.6831 806.4473 549.1633 806.072 549.6454 805.6993 549.8855 805.1734 549.8855 804.4968ZM562.7375 805.7146V797.0292H563.9477V807.7518H562.7222L558.8161 801.9003 554.91 807.7518H553.6845V797.0292H554.864V805.6993L558.7702 799.9702H558.8314Z" style="fill:var(--logo-ink,#004B23)"/><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M408.8013 791.9824C408.8013 792.1106 408.8557 792.2188 408.9651 792.3084 409.0745 792.398 409.2279 792.4428 409.4246 792.4428 409.5998 792.4428 409.773 792.4088 409.9442 792.3413 410.1157 792.2738 410.2889 792.176 410.4641 792.0482L410.8249 792.5579C410.6282 792.7149 410.4173 792.8345 410.1931 792.9167 409.9689 792.9989 409.7163 793.0397 409.4357 793.0397 409.246 793.0397 409.0711 793.0134 408.9115 792.9604 408.7508 792.9077 408.6142 792.8317 408.5002 792.733 408.3866 792.6347 408.297 792.5168 408.2312 792.3798 408.1666 792.2426 408.1337 792.0901 408.1337 791.9223 408.1337 791.7432 408.162 791.5918 408.2185 791.4677 408.2751 791.3432 408.3582 791.2375 408.4656 791.1499 408.5731 791.062 408.7071 790.9889 408.8659 790.9305 409.0252 790.8721 409.2069 790.8191 409.4118 790.7717 409.5907 790.7278 409.7356 790.6859 409.8475 790.6456 409.9589 790.6054 410.0465 790.5626 410.1111 790.5169 410.1749 790.4713 410.2189 790.4211 410.2424 790.3664 410.2662 790.3114 410.2781 790.2493 410.2781 790.1799 410.2781 790.0302 410.2169 789.9114 410.0947 789.8238 409.9725 789.7363 409.8076 789.6923 409.5998 789.6923 409.3588 789.6923 409.144 789.7354 408.9543 789.821 408.7647 789.9069 408.5768 790.0302 408.3908 790.1909L407.986 789.7088C408.2159 789.5007 408.4656 789.3462 408.7355 789.2459 409.0054 789.1452 409.288 789.0951 409.5833 789.0951 409.7837 789.0951 409.968 789.1209 410.1358 789.1719 410.3025 789.2229 410.4465 789.2977 410.5653 789.3964 410.6846 789.495 410.7776 789.6155 410.845 789.7581 410.9117 789.9004 410.9454 790.0631 410.9454 790.2456 410.9454 790.4064 410.919 790.5461 410.866 790.6649 410.8133 790.7834 410.7348 790.8877 410.6327 790.9773 410.5307 791.0666 410.4011 791.1425 410.2461 791.2046 410.091 791.2667 409.9124 791.3234 409.7117 791.3744 409.5286 791.4183 409.3781 791.4603 409.2588 791.5005 409.1403 791.5405 409.0473 791.5844 408.979 791.6318 408.9115 791.6794 408.865 791.7304 408.8392 791.7854 408.814 791.8401 408.8013 791.9059 408.8013 791.9824ZM416.9854 791.9002V789.15H417.653V792.985H416.9364L415.7711 791.1717 414.606 792.985H413.8897V789.15H414.557V791.8894L415.7546 790.0923H415.7768ZM422.7687 793.0125H422.1451L420.4604 789.15H421.1495L421.5433 790.0758H423.354L423.7424 789.15H424.4533ZM423.1077 790.6731H421.7896L422.4458 792.2072ZM430.5101 789.15 429.4763 790.602C429.6112 790.6382 429.7343 790.6904 429.8457 790.7581 429.9568 790.8256 430.0523 790.9078 430.1325 791.0045 430.2128 791.1011 430.2757 791.2128 430.3213 791.3387 430.367 791.4648 430.3896 791.6083 430.3896 791.769 430.3896 791.9552 430.357 792.1239 430.2913 792.2755 430.2255 792.4272 430.1317 792.555 430.0095 792.6591 429.8873 792.7634 429.738 792.8436 429.5611 792.9003 429.3842 792.9567 429.1863 792.985 428.9675 792.985H427.2608V789.15H427.9283V790.4866H428.7733L429.717 789.15ZM429.7059 791.7333C429.7059 791.5351 429.6348 791.3772 429.4916 791.2602 429.3493 791.1425 429.1571 791.0838 428.9153 791.0838H427.9283V792.377H428.91C429.1625 792.377 429.3587 792.3231 429.497 792.2146 429.6368 792.1066 429.7059 791.9459 429.7059 791.7333ZM434.9693 792.3606H436.1837V792.985H433.0769V792.3606H434.2912V789.15H434.9693ZM445.9771 792.985H443.1331V789.15H443.8003V790.7114H445.7313V791.3194H443.8003V792.377H445.9771ZM450.415 793.0125H449.7911L448.1065 789.15H448.7956L449.1896 790.0758H451.0001L451.3887 789.15H452.0996ZM450.754 790.6731H449.4356L450.0921 792.2072ZM458.1561 789.15 457.1223 790.602C457.2573 790.6382 457.3803 790.6904 457.4917 790.7581 457.6028 790.8256 457.6983 790.9078 457.7788 791.0045 457.8591 791.1011 457.922 791.2128 457.9673 791.3387 458.013 791.4648 458.0359 791.6083 458.0359 791.769 458.0359 791.9552 458.0031 792.1239 457.9376 792.2755 457.8718 792.4272 457.778 792.555 457.6558 792.6591 457.5336 792.7634 457.384 792.8436 457.2071 792.9003 457.0302 792.9567 456.8323 792.985 456.6138 792.985H454.9071V789.15H455.5746V790.4866H456.4193L457.363 789.15ZM457.3519 791.7333C457.3519 791.5351 457.2811 791.3772 457.1379 791.2602 456.9956 791.1425 456.8034 791.0838 456.5616 791.0838H455.5746V792.377H456.5563C456.8088 792.377 457.0047 792.3231 457.1433 792.2146 457.2828 792.1066 457.3519 791.9459 457.3519 791.7333ZM464.1089 791.9002V789.15H464.7762V792.985H464.0596L462.8945 791.1717 461.7292 792.985H461.0129V789.15H461.6802V791.8894L462.8781 790.0923H462.8999ZM467.9501 792.985V789.15H468.6174V792.985ZM474.4664 790.3335 472.4195 792.985H471.7967V789.15H472.4643V791.8784L474.571 789.15H475.1334V792.985H474.4664ZM481.6826 789.6813V791.2922H480.0523V790.706H481.0314V789.9846C480.9149 789.8958 480.7772 789.8255 480.6187 789.7717 480.46 789.719 480.2896 789.6923 480.1073 789.6923 479.9103 789.6923 479.7323 789.7269 479.5739 789.7963 479.4154 789.8658 479.2785 789.9627 479.1634 790.0849 479.0486 790.2074 478.9604 790.3525 478.8981 790.5214 478.8363 790.6895 478.8051 790.8729 478.8051 791.0702 478.8051 791.2565 478.8371 791.4328 478.9009 791.5972 478.9647 791.7625 479.0523 791.9067 479.1634 792.0309 479.2748 792.1551 479.406 792.2537 479.5574 792.3249 479.7085 792.3963 479.8718 792.4317 480.047 792.4317 480.1671 792.4317 480.2777 792.4218 480.378 792.4017 480.4781 792.3815 480.5702 792.354 480.6541 792.3195 480.738 792.2849 480.8183 792.2418 480.8948 792.1908 480.9713 792.1395 481.0462 792.0831 481.119 792.021L481.5456 792.5304C481.4473 792.6143 481.3461 792.6883 481.2423 792.7523 481.1383 792.8161 481.0277 792.8702 480.9112 792.9139 480.7945 792.9578 480.6677 792.9916 480.5311 793.0154 480.3942 793.0389 480.242 793.0508 480.0745 793.0508 479.7862 793.0508 479.5209 792.9981 479.2785 792.8921 479.0358 792.786 478.8269 792.6426 478.652 792.462 478.4771 792.2812 478.3414 792.0703 478.2444 791.8291 478.148 791.5881 478.0996 791.3324 478.0996 791.062 478.0996 790.7808 478.1469 790.5197 478.2419 790.2785 478.3365 790.0376 478.4706 789.8284 478.6438 789.6512 478.817 789.474 479.0259 789.3351 479.2703 789.2348 479.5143 789.1345 479.7862 789.084 480.0852 789.084 480.253 789.084 480.4135 789.0996 480.5666 789.1308 480.7199 789.1617 480.8631 789.2048 480.996 789.2595 481.1292 789.3142 481.2531 789.3782 481.3679 789.4514 481.4827 789.5242 481.5879 789.601 481.6826 789.6813ZM490.229 790.503V791.1553H488.6099V790.503ZM500.11 792.985H497.2657V789.15H497.933V790.7114H499.864V791.3194H497.933V792.377H500.11ZM506.2541 789.15 505.2206 790.602C505.3552 790.6382 505.4786 790.6904 505.5897 790.7581 505.7008 790.8256 505.7966 790.9078 505.8768 791.0045 505.957 791.1011 506.02 791.2128 506.0656 791.3387 506.1112 791.4648 506.1339 791.6083 506.1339 791.769 506.1339 791.9552 506.1013 792.1239 506.0356 792.2755 505.9698 792.4272 505.876 792.555 505.7538 792.6591 505.6316 792.7634 505.482 792.8436 505.3054 792.9003 505.1285 792.9567 504.9306 792.985 504.7118 792.985H503.005V789.15H503.6726V790.4866H504.5176L505.4613 789.15ZM505.4502 791.7333C505.4502 791.5351 505.3791 791.3772 505.2359 791.2602 505.0936 791.1425 504.9011 791.0838 504.6596 791.0838H503.6726V792.377H504.6542C504.9068 792.377 505.1027 792.3231 505.2416 792.2146 505.381 792.1066 505.4502 791.9459 505.4502 791.7333ZM511.9444 792.985H509.1109V789.15H511.9716V789.7581H509.7784V790.7825H511.6983V791.3908H509.7784V792.377H511.9444ZM515.4902 791.9824C515.4902 792.1106 515.5449 792.2188 515.6544 792.3084 515.7638 792.398 515.9171 792.4428 516.1139 792.4428 516.2888 792.4428 516.462 792.4088 516.6334 792.3413 516.8049 792.2738 516.9781 792.176 517.1533 792.0482L517.5142 792.5579C517.3172 792.7149 517.1066 792.8345 516.8823 792.9167 516.6581 792.9989 516.4055 793.0397 516.1246 793.0397 515.9353 793.0397 515.7604 793.0134 515.6005 792.9604 515.4401 792.9077 515.3034 792.8317 515.1895 792.733 515.0755 792.6347 514.986 792.5168 514.9205 792.3798 514.8558 792.2426 514.823 792.0901 514.823 791.9223 514.823 791.7432 514.8513 791.5918 514.9077 791.4677 514.9644 791.3432 515.0472 791.2375 515.1546 791.1499 515.2623 791.062 515.3964 790.9889 515.5551 790.9305 515.7145 790.8721 515.8959 790.8191 516.1011 790.7717 516.28 790.7278 516.4248 790.6859 516.5368 790.6456 516.6479 790.6054 516.7355 790.5626 516.8004 790.5169 516.8642 790.4713 516.9078 790.4211 516.9317 790.3664 516.9552 790.3114 516.9671 790.2493 516.9671 790.1799 516.9671 790.0302 516.9059 789.9114 516.784 789.8238 516.6618 789.7363 516.4965 789.6923 516.2888 789.6923 516.0481 789.6923 515.8329 789.7354 515.6433 789.821 515.4537 789.9069 515.266 790.0302 515.0798 790.1909L514.6753 789.7088C514.9049 789.5007 515.1546 789.3462 515.4245 789.2459 515.6943 789.1452 515.9769 789.0951 516.2726 789.0951 516.473 789.0951 516.6573 789.1209 516.8248 789.1719 516.9917 789.2229 517.1357 789.2977 517.2542 789.3964 517.3739 789.495 517.4668 789.6155 517.534 789.7581 517.6006 789.9004 517.6346 790.0631 517.6346 790.2456 517.6346 790.4064 517.608 790.5461 517.5553 790.6649 517.5023 790.7834 517.424 790.8877 517.322 790.9773 517.2197 791.0666 517.0901 791.1425 516.9353 791.2046 516.7803 791.2667 516.6017 791.3234 516.401 791.3744 516.2179 791.4183 516.0674 791.4603 515.948 791.5005 515.8295 791.5405 515.7366 791.5844 515.6683 791.6318 515.6005 791.6794 515.5543 791.7304 515.5285 791.7854 515.503 791.8401 515.4902 791.9059 515.4902 791.9824ZM523.084 790.7661V789.15H523.7512V792.985H523.084V791.3908H521.2463V792.985H520.5787V789.15H521.2463V790.7661ZM533.8185 792.985H530.9742V789.15H531.6415V790.7114H533.5724V791.3194H531.6415V792.377H533.8185ZM539.93 792.985H539.2624V790.7771C539.2624 790.4228 539.176 790.1561 539.0036 789.9772 538.8313 789.7983 538.5951 789.7088 538.2944 789.7088 537.99 789.7088 537.7518 789.802 537.5795 789.9883 537.4074 790.1745 537.3207 790.4466 537.3207 790.8046V792.985H536.6534V790.7771C536.6534 790.4996 536.6917 790.2558 536.7682 790.0458 536.8448 789.8357 536.9542 789.6594 537.0965 789.5171 537.2385 789.3746 537.41 789.2677 537.6104 789.1965 537.8111 789.1254 538.0353 789.0897 538.2833 789.0897 538.5351 789.0897 538.7621 789.1254 538.9645 789.1965 539.1666 789.2677 539.339 789.3754 539.4813 789.5197 539.6236 789.664 539.7338 789.844 539.8123 790.0594 539.8906 790.2748 539.93 790.5251 539.93 790.81ZM544.6244 792.3606H545.8388V792.985H542.732V792.3606H543.9464V789.15H544.6244ZM551.9174 792.985H551.2499V790.7771C551.2499 790.4228 551.1634 790.1561 550.9911 789.9772 550.8187 789.7983 550.5826 789.7088 550.2818 789.7088 549.9774 789.7088 549.7393 789.802 549.5669 789.9883 549.3946 790.1745 549.3081 790.4466 549.3081 790.8046V792.985H548.6409V790.7771C548.6409 790.4996 548.6791 790.2558 548.7557 790.0458 548.8322 789.8357 548.9416 789.6594 549.0839 789.5171 549.2259 789.3746 549.3974 789.2677 549.5978 789.1965 549.7985 789.1254 550.0227 789.0897 550.2708 789.0897 550.5225 789.0897 550.7495 789.1254 550.9519 789.1965 551.154 789.2677 551.3264 789.3754 551.4687 789.5197 551.611 789.664 551.7213 789.844 551.7998 790.0594 551.878 790.2748 551.9174 790.5251 551.9174 790.81ZM558.2418 789.15 557.208 790.602C557.3432 790.6382 557.4662 790.6904 557.5774 790.7581 557.6888 790.8256 557.7843 790.9078 557.8645 791.0045 557.9447 791.1011 558.0077 791.2128 558.0533 791.3387 558.0989 791.4648 558.1216 791.6083 558.1216 791.769 558.1216 791.9552 558.0887 792.1239 558.0232 792.2755 557.9575 792.4272 557.8637 792.555 557.7415 792.6591 557.6193 792.7634 557.4696 792.8436 557.293 792.9003 557.1159 792.9567 556.9183 792.985 556.6995 792.985H554.993V789.15H555.6603V790.4866H556.5053L557.4489 789.15ZM557.4379 791.7333C557.4379 791.5351 557.3667 791.3772 557.2236 791.2602 557.0813 791.1425 556.8891 791.0838 556.6476 791.0838H555.6603V792.377H556.6419C556.8945 792.377 557.0906 792.3231 557.2293 792.2146 557.3687 792.1066 557.4379 791.9459 557.4379 791.7333ZM563.9321 792.985H561.0986V789.15H563.9593V789.7581H561.7661V790.7825H563.6857V791.3908H561.7661V792.377H563.9321Z" style="fill:var(--logo-sub,#454646)"/></g></symbol>
+<symbol id="vdf-compact" viewBox="0 0 199.6 39"><g transform="translate(-365.4 -23.9)"><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M385.0245 779.3271H365.8955C365.8955 786.191 369.5593 792.2395 375.0276 795.6162 375.5197 793.8935 376.4477 792.3504 377.6834 791.1147 379.5639 789.2342 382.1579 788.0661 385.0121 788.0624H385.0245 385.0251 385.0376C387.8915 788.0661 390.4855 789.2342 392.366 791.1147 394.2493 792.9984 395.4186 795.5972 395.4186 798.4559V798.4562H404.1539 395.4186V808.3463C395.4186 808.6243 395.193 808.85 394.914 808.85 392.0553 808.85 389.4565 807.681 387.5732 805.7976 386.4226 804.6468 385.5385 803.2286 385.0245 801.6474 384.5109 803.2286 383.6268 804.6468 382.4759 805.7976 380.5929 807.681 377.994 808.85 375.1347 808.85 374.8564 808.85 374.6307 808.6243 374.6307 808.3463V801.5482C369.383 804.9685 365.8955 810.8889 365.8955 817.5852H385.0245C395.5462 817.5852 404.1539 808.9778 404.1539 798.4562 404.1539 787.9346 395.5462 779.3271 385.0245 779.3271" style="fill:var(--logo-d,url(#vdf-grad))"/><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M375.6385 807.8287V798.4559C375.6385 795.8752 376.6946 793.5287 378.396 791.8274 379.986 790.2374 382.1391 789.2113 384.5208 789.0837V798.4568C384.5208 801.0374 383.4649 803.3837 381.7636 805.085 380.1736 806.675 378.0201 807.7014 375.6385 807.8287" style="fill:var(--logo-leaf1,#009E3C)"/><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M394.4109 798.4559V807.8287C392.0292 807.7014 389.8757 806.675 388.2858 805.085 386.5844 803.3837 385.5285 801.0374 385.5285 798.4568V789.0837C387.9099 789.2113 390.0634 790.2374 391.6534 791.8274 393.3547 793.5287 394.4109 795.8752 394.4109 798.4559" style="fill:var(--logo-leaf2,#99CE13)"/><g transform="translate(0 4.3)"><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M415.2988 797.0284 419.6186 807.7518H416.3559L413.9203 800.966 411.4845 807.7518H408.1606L412.4803 797.0284ZM424.9035 797.0292H428.978C432.8382 797.0292 435.09 799.327 435.09 802.4213V802.4519C435.09 805.5459 432.8688 807.7518 429.0395 807.7518H424.9035ZM427.875 799.6637V805.117H429.0854C430.8622 805.117 432.0417 804.1215 432.0417 802.406V802.3751C432.0417 800.6443 430.8622 799.6637 429.0854 799.6637ZM436.6222 797.0292H439.5937V801.1037H443.408V797.0292H446.3799V807.7518H443.408V803.7386H439.5937V807.7518H436.6222ZM447.4213 797.0292H450.5462L451.3122 798.9437H455.4482L456.2294 797.0292H459.4156L454.8509 807.8284H451.9862ZM452.1852 801.2571 453.3953 804.3055 454.5904 801.2571ZM460.4573 797.0292H463.3982V802.9114L467.9785 797.0292H470.5826V807.7518H467.6414V802.0843L463.2299 807.7518H460.4573ZM472.4821 797.0292H475.4537V799.8018L476.5414 801.0119 479.2374 797.0292H482.8068L478.6095 803.1413 482.6687 807.7518H479.1455L475.4537 803.4015V807.7518H472.4821ZM488.1526 796.83C491.2013 796.83 493.177 798.3465 493.177 801.8084V807.7518H490.1596V801.7166C490.1596 800.2154 489.3783 799.5107 488.1835 799.5107 486.9884 799.5107 486.2075 800.246 486.2075 801.7931V807.7518H483.1897V801.7319C483.1897 798.3771 485.1045 796.83 488.1526 796.83ZM494.9388 797.0292H499.0136C502.8738 797.0292 505.1256 799.327 505.1256 802.4213V802.4519C505.1256 805.5459 502.9044 807.7518 499.0748 807.7518H494.9388ZM497.9106 799.6637V805.117H499.1207C500.8975 805.117 502.077 804.1215 502.077 802.406V802.3751C502.077 800.6443 500.8975 799.6637 499.1207 799.6637ZM506.6575 797.0292H515.3581V799.5566H509.5984V801.2571H514.7453V803.6008H509.5984V805.2245H515.2816V807.7518H506.6575Z" style="fill:var(--logo-ink,#004B23)"/><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M529.3896 807.7518H521.6848V797.0292H522.8946V801.7013H528.7005V802.804H522.8946V806.6336H529.3896ZM535.6089 807.8284H534.4753L529.5886 797.0292H530.8296L532.101 799.863H537.9372L539.1933 797.0292H540.4955ZM537.4624 800.9354H532.5758L535.0266 806.404ZM551.4789 797.0292 548.1853 801.4076C548.604 801.4791 548.9921 801.6015 549.3495 801.7753 549.707 801.9488 550.0159 802.1659 550.2762 802.4261 550.5367 802.6866 550.7385 802.993 550.8814 803.3454 551.0242 803.6977 551.0957 804.0986 551.0957 804.5478 551.0957 805.0277 551.0038 805.4668 550.8201 805.86 550.6362 806.2532 550.3759 806.5905 550.0386 806.8711 549.7019 807.152 549.2959 807.3689 548.8209 807.5222 548.346 807.6753 547.8126 807.7518 547.2201 807.7518H542.6096V797.0292H543.8197V801.1956H546.8831L549.9927 797.0292ZM549.8855 804.4968C549.8855 804.1496 549.8167 803.8355 549.6786 803.5597 549.5411 803.2816 549.3495 803.0492 549.1018 802.8604 548.8566 802.6713 548.5657 802.5233 548.2261 802.4213 547.8891 802.319 547.5214 802.2679 547.1206 802.2679H543.8197V806.6336H547.1359C548.0065 806.6336 548.6831 806.4473 549.1633 806.072 549.6454 805.6993 549.8855 805.1734 549.8855 804.4968ZM562.7375 805.7146V797.0292H563.9477V807.7518H562.7222L558.8161 801.9003 554.91 807.7518H553.6845V797.0292H554.864V805.6993L558.7702 799.9702H558.8314Z" style="fill:var(--logo-ink,#004B23)"/></g></g></symbol>
+<symbol id="vdf-watermark" viewBox="0 0 39 39"><g transform="translate(-365.4 -23.9)"><path transform="matrix(1,0,0,-1,0,841.8898)" fill-rule="evenodd" d="M385.0245 779.3271H365.8955C365.8955 786.191 369.5593 792.2395 375.0276 795.6162 375.5197 793.8935 376.4477 792.3504 377.6834 791.1147 379.5639 789.2342 382.1579 788.0661 385.0121 788.0624H385.0245 385.0251 385.0376C387.8915 788.0661 390.4855 789.2342 392.366 791.1147 394.2493 792.9984 395.4186 795.5972 395.4186 798.4559V798.4562H404.1539 395.4186V808.3463C395.4186 808.6243 395.193 808.85 394.914 808.85 392.0553 808.85 389.4565 807.681 387.5732 805.7976 386.4226 804.6468 385.5385 803.2286 385.0245 801.6474 384.5109 803.2286 383.6268 804.6468 382.4759 805.7976 380.5929 807.681 377.994 808.85 375.1347 808.85 374.8564 808.85 374.6307 808.6243 374.6307 808.3463V801.5482C369.383 804.9685 365.8955 810.8889 365.8955 817.5852H385.0245C395.5462 817.5852 404.1539 808.9778 404.1539 798.4562 404.1539 787.9346 395.5462 779.3271 385.0245 779.3271" style="fill:currentColor"/></g></symbol>
+</defs></svg>
+<!--/LOGO_SYMBOLS-->
+
+<!-- ===================== Review shell ===================== -->
+<header class="chrome">
+  <div class="chrome-in">
+    <div>
+      <h1>V Dhankude Farm · homepage directions</h1>
+      <p>Final logo applied from the stationery PDF. Photos and contact details are still placeholders.</p>
+    </div>
+    <div class="seg" role="tablist" aria-label="Design direction">
+      <button role="tab" id="tab-a" aria-selected="true" data-set="a">A · Rooted</button>
+      <button role="tab" id="tab-b" aria-selected="false" data-set="b">B · Grow Lab</button>
+    </div>
+  </div>
+</header>
+
+<section class="kit" aria-label="Brand kit for the selected direction">
+  <div class="kit-in">
+    <div>
+      <div class="dir-only dir-a">
+        <h2>A · Rooted</h2>
+        <p class="lede">Light, open and approachable. It puts the education story first. The logo's greens appear in the type and small lime details on an off-white page, and the "D" from the letterhead sits faintly behind the hero.</p>
+        <h3>Best if you want the site to feel</h3>
+        <ul class="fit"><li>Welcoming to complete beginners and families</li><li>Like a calm, knowledgeable guide</li><li>Close to the letterhead: white page, green mark</li></ul>
+      </div>
+      <div class="dir-only dir-b">
+        <h2>B · Grow Lab</h2>
+        <p class="lede">Bold and confident, with "Smart Farming" up front. It borrows the dark green gradient from the back of the business card. Lime is the call-to-action color, and a monospace face carries labels and data.</p>
+        <h3>Best if you want the site to feel</h3>
+        <ul class="fit"><li>Like a modern agritech and consulting business</li><li>Ready for the future IoT and automation story</li><li>Close to the business card: dark green panels, white mark</li></ul>
+      </div>
+      <p class="note">The logo now matches the PDF exactly in both directions. Each direction only changes how the page around it is styled: colors, type, shapes and layout. In the app all of this lives in <code>src/brand/</code>.</p>
+    </div>
+
+    <div>
+      <h3>Palette (taken from the logo)</h3>
+      <div class="swatches">
+        <div class="sw"><i style="background:#00381B"></i><span><b>Forest</b>#00381B</span></div>
+        <div class="sw"><i style="background:#004B23"></i><span><b>Wordmark</b>#004B23</span></div>
+        <div class="sw"><i style="background:#009E3C"></i><span><b>Leaf</b>#009E3C</span></div>
+        <div class="sw"><i style="background:#99CE13"></i><span><b>Lime</b>#99CE13</span></div>
+        <div class="sw"><i style="background:#454646"></i><span><b>Graphite</b>#454646</span></div>
+        <div class="sw dir-only dir-a"><i style="background:#F7F9F4"></i><span><b>Ground</b>#F7F9F4</span></div>
+        <div class="sw dir-only dir-b"><i style="background:#FFFFFF"></i><span><b>Ground</b>#FFFFFF</span></div>
+      </div>
+      <p class="note">Lime and leaf green are too light for body text on white, so they are used for marks, buttons and accents only. Text uses Forest and Wordmark green.</p>
+      <div class="type-spec">
+        <h3>Type</h3>
+        <div class="dir-only dir-a">
+          <div class="big" style="font-family:'Montserrat',system-ui,sans-serif;font-weight:700;letter-spacing:-.02em">Grow Smarter</div>
+          <div class="small">Montserrat for headings (close to the logo lettering) · Manrope for body</div>
+        </div>
+        <div class="dir-only dir-b">
+          <div class="big" style="font-family:'Montserrat',system-ui,sans-serif;font-weight:800;letter-spacing:-.035em">Grow Smarter</div>
+          <div class="small">Montserrat 800 · IBM Plex Sans for body · <span style="font-family:'JetBrains Mono',monospace">JetBrains Mono</span> for labels</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Logo variants for the web</h3>
+      <div class="logos">
+        <div class="logo-tile wide" style="background:#FFFFFF"><svg viewBox="0 0 199.6 39" height="54" role="img" aria-label="V Dhankude Farm logo, full"><use href="#vdf-full"/></svg><small style="color:#536156">FULL · footer, print, large</small></div>
+        <div class="logo-tile wide" style="background:#FFFFFF"><svg viewBox="0 0 199.6 39" height="40" role="img" aria-label="V Dhankude Farm logo, compact"><use href="#vdf-compact"/></svg><small style="color:#536156">COMPACT · header (tagline too small here)</small></div>
+        <div class="logo-tile" style="background:#00381B"><svg class="logo-inverse" viewBox="0 0 199.6 39" height="34" role="img" aria-label="V Dhankude Farm logo, inverse"><use href="#vdf-full"/></svg><small style="color:#A8C2AE">INVERSE</small></div>
+        <div class="logo-tile" style="background:#FFFFFF"><svg viewBox="0 0 39 39" height="40" role="img" aria-label="V Dhankude Farm mark"><use href="#vdf-mark"/></svg><small style="color:#536156">MARK · favicon, app</small></div>
+      </div>
+      <h3 style="margin-top:14px">Buttons</h3>
+      <div class="site" data-dir="a" id="kit-btns" style="background:transparent">
+        <div class="btns"><span class="btn btn-primary">Visit Our Farm</span><span class="btn btn-secondary">Explore Hydroponics</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="frame-label">Homepage preview · adapts from desktop down to phone width</div>
+
+<!-- ===================== Site mock ===================== -->
+<div class="frame">
+<div class="frame-in">
+<div class="site" data-dir="a" id="site">
+
+  <header class="s-header">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="V Dhankude Farm home">
+        <svg viewBox="0 0 199.6 39" aria-hidden="true"><use href="#vdf-compact"/></svg>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#top" aria-current="page">Home</a><a href="#about">About</a><a href="#what">Hydroponics</a><a href="#visit">Our Farm</a><a href="#training">Training</a><a href="#setup">Farm Setup</a><a href="#final">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="#visit">Visit Our Farm</a>
+      <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" data-open="false" aria-label="Mobile">
+      <a href="#top">Home</a><a href="#about">About</a><a href="#what">Hydroponics</a><a href="#visit">Our Farm</a><a href="#training">Training</a><a href="#setup">Farm Setup</a><a href="#final">Contact</a>
+      <a class="btn btn-primary" href="#visit">Visit Our Farm</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- 1 HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <svg class="wm" viewBox="0 0 39 39" aria-hidden="true"><use href="#vdf-watermark"/></svg>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Modern Hydroponic Farm</span>
+          <h1 class="h1" id="hero-title">Grow More. Grow Smarter. <span class="soft">Grow Anywhere.</span></h1>
+          <p class="lead">Discover how hydroponic farming can transform the way you grow, from your home and terrace to farms and commercial spaces.</p>
+          <div class="btns">
+            <a class="btn btn-primary" href="#what">Explore Hydroponics <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn-secondary" href="#visit">Visit Our Farm</a>
+          </div>
+        </div>
+        <div class="ph hero-media" role="img" aria-label="Photo placeholder"><span>PHOTO · hero · wide shot of growing channels at the farm</span></div>
+      </div>
+      <div class="hero-strip" aria-label="How we help">
+        <ol class="wrap">
+          <li><span>01</span>Learn</li><li><span>02</span>Visit</li><li><span>03</span>Train</li><li><span>04</span>Build</li><li><span>05</span>Grow</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 2 WHAT IS -->
+    <section class="sec tint" id="what" aria-labelledby="what-title">
+      <div class="wrap split">
+        <div class="ph" role="img" aria-label="Photo placeholder"><span>PHOTO · close-up of roots in nutrient water</span></div>
+        <div class="split-copy">
+          <span class="eyebrow">The basics</span>
+          <h2 id="what-title">What is Hydroponic Farming?</h2>
+          <p class="lead">Hydroponic farming is a way of growing plants without traditional soil. The roots get water, nutrients and oxygen directly, in growing conditions you can see and control.</p>
+          <p class="muted">It isn't limited to big commercial greenhouses. The same principles work at very different sizes:</p>
+          <ul class="places"><li>Homes</li><li>Terraces</li><li>Small farms</li><li>Commercial spaces</li><li>Controlled environments</li></ul>
+          <a class="link" href="#what">Learn About Hydroponics <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 WHY -->
+    <section class="sec" id="why" aria-labelledby="why-title">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">Why hydroponics</span>
+          <h2 id="why-title">A practical way to grow with more control</h2>
+        </div>
+        <ul class="why">
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/></svg></span><h3>Efficient water use</h3><p>Many systems recirculate the same nutrient water, so less of it drains away into the ground.</p></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M4 15h16"/></svg></span><h3>Space-friendly growing</h3><p>Vertical and compact layouts can fit balconies, terraces and small plots.</p></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h16M7 18V9M12 18V5M17 18v-6"/></svg></span><h3>Controlled conditions</h3><p>You manage nutrients, pH and water directly, so you can see and adjust what plants receive.</p></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10a7 7 0 0 1 14 0c0 3.5-3 7-7 10z"/><path d="M12 14V9M9.5 11.5 12 9l2.5 2.5"/></svg></span><h3>Fresh produce</h3><p>Grow close to where you eat or sell, and harvest when you need it.</p></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></span><h3>Modern farming</h3><p>A measurable way to grow, built on today's tools and knowledge.</p></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4v-5H4zM10 20h4V10h-4zM16 20h4V4h-4z"/></svg></span><h3>Scalable systems</h3><p>Start with a few channels and add more as your confidence and needs grow.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4 ANYONE CAN START -->
+    <section class="sec tint" id="about" aria-labelledby="scale-title">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">Anyone can start</span>
+          <h2 id="scale-title">You Don't Need a Huge Farm to Start</h2>
+        </div>
+        <ul class="scales">
+          <li><a class="scale" href="#setup"><div class="ph" role="img" aria-label="Photo placeholder"><span>PHOTO · home kit</span></div><span class="meter" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span><h3>Home</h3><p>A compact system for your kitchen or balcony.</p></a></li>
+          <li><a class="scale" href="#setup"><div class="ph" role="img" aria-label="Photo placeholder"><span>PHOTO · terrace setup</span></div><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span><h3>Terrace</h3><p>Make use of rooftop and terrace space.</p></a></li>
+          <li><a class="scale" href="#setup"><div class="ph" role="img" aria-label="Photo placeholder"><span>PHOTO · small farm</span></div><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><h3>Small Farm</h3><p>A step up for growers ready to expand.</p></a></li>
+          <li><a class="scale" href="#setup"><div class="ph" role="img" aria-label="Photo placeholder"><span>PHOTO · commercial</span></div><span class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><h3>Commercial</h3><p>Planned, larger-scale growing operations.</p></a></li>
+        </ul>
+        <p class="scale-msg">Start with the space you have. Learn the process. Grow at your own pace.</p>
+      </div>
+    </section>
+
+    <!-- 5 HOW WE HELP -->
+    <section class="sec" id="journey" aria-labelledby="journey-title">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">How we help</span>
+          <h2 id="journey-title">From first question to your own harvest</h2>
+        </div>
+        <ol class="journey">
+          <li><span class="dot" aria-hidden="true"></span><span class="num">01</span><h3>Learn</h3><p>Understand hydroponics and what it makes possible.</p></li>
+          <li><span class="dot" aria-hidden="true"></span><span class="num">02</span><h3>Visit</h3><p>See a working hydroponic farm in person.</p></li>
+          <li><span class="dot" aria-hidden="true"></span><span class="num">03</span><h3>Train</h3><p>Learn practical techniques and day-to-day operation.</p></li>
+          <li><span class="dot" aria-hidden="true"></span><span class="num">04</span><h3>Build</h3><p>Get help planning and setting up your system.</p></li>
+          <li><span class="dot" aria-hidden="true"></span><span class="num">05</span><h3>Grow</h3><p>Run and improve your own hydroponic farm.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6 FARM VISIT -->
+    <section class="sec tint" id="visit" aria-labelledby="visit-title">
+      <div class="wrap split">
+        <div class="ph" role="img" aria-label="Photo placeholder"><span>PHOTO · visitors walking between growing channels</span></div>
+        <div class="split-copy">
+          <span class="eyebrow">Farm visits</span>
+          <h2 id="visit-title">See Hydroponics in Action</h2>
+          <p class="lead">The quickest way to understand hydroponics is to stand next to a working system. During a visit you can:</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>See working hydroponic systems up close</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Understand how the farm runs day to day</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Ask questions and learn from practical experience</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Talk through your own hydroponic plans</li>
+          </ul>
+          <div class="btns"><a class="btn btn-primary" href="#final">Schedule a Farm Visit</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 TRAINING -->
+    <section class="sec" id="training" aria-labelledby="training-title">
+      <div class="wrap two">
+        <div class="head" style="margin:0">
+          <span class="eyebrow">Training</span>
+          <h2 id="training-title">Learn From Experience</h2>
+          <p class="lead">Practical learning, based on running a real hydroponic farm. Topics can include:</p>
+          <div class="btns" style="margin-top:8px"><a class="btn btn-secondary" href="#final">Enquire About Training</a></div>
+        </div>
+        <div>
+          <ul class="topics">
+            <li>Introduction to hydroponics</li><li>System selection</li><li>Crop planning</li><li>Growing practices</li><li>Basic monitoring</li><li>System maintenance</li><li>Day-to-day operation</li>
+          </ul>
+          <p class="placeholder-note">Training formats, duration and schedule: [TRAINING_DETAILS]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 FARM SETUP -->
+    <section class="sec inv" id="setup" aria-labelledby="setup-title">
+      <svg class="wm" viewBox="0 0 39 39" aria-hidden="true"><use href="#vdf-watermark"/></svg>
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">Farm setup</span>
+          <h2 id="setup-title">Ready to Start Your Own Hydroponic Farm?</h2>
+          <p class="lead">Whether you want to start at home, on a terrace, or at a larger scale, we can help you plan and build your hydroponic setup.</p>
+        </div>
+        <ul class="setup-cats">
+          <li><a href="#final">Home Setup <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="#final">Terrace Setup <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="#final">Small Farm Setup <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="#final">Commercial Setup <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        </ul>
+        <div class="btns"><a class="btn btn-primary" href="#final">Discuss Your Setup</a></div>
+      </div>
+    </section>
+
+    <!-- 9 SMART / IoT (vision only) -->
+    <section class="sec tint" id="smart" aria-labelledby="smart-title">
+      <div class="wrap smart">
+        <div class="smart-copy">
+          <span class="badge">Our vision for the future</span>
+          <h2 id="smart-title">The Future of Hydroponics is Smart</h2>
+          <p class="lead">We're working toward connected hydroponic systems that help growers keep an eye on their farm and act sooner. This is a direction we're building toward, not a product available today.</p>
+          <ul class="caps"><li>Sensors</li><li>Monitoring</li><li>Alerts</li><li>Remote monitoring</li><li>Data collection</li><li>Automated control</li></ul>
+        </div>
+        <div class="panel" aria-label="Concept illustration of future monitoring">
+          <div class="panel-head"><strong>Monitoring concept</strong><span>Illustration only · no live data</span></div>
+          <div class="params">
+            <div class="param"><span class="k">Temperature</span><span class="v">——<small>°C</small></span></div>
+            <div class="param"><span class="k">pH</span><span class="v">——<small>pH</small></span></div>
+            <div class="param"><span class="k">EC</span><span class="v">——<small>mS/cm</small></span></div>
+            <div class="param"><span class="k">Water level</span><span class="v">——<small>%</small></span></div>
+            <div class="param"><span class="k">Pump</span><span class="v">——<small>on/off</small></span></div>
+            <div class="param"><span class="k">Nutrients</span><span class="v">——<small>dosing</small></span></div>
+          </div>
+          <p class="panel-foot">Parameters we plan to explore. Capabilities will be announced when they are ready.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 FINAL CTA -->
+    <section class="sec" id="final" aria-labelledby="final-title">
+      <div class="wrap final">
+        <div class="head">
+          <span class="eyebrow">Get in touch</span>
+          <h2 id="final-title">Ready to Explore Hydroponic Farming?</h2>
+          <p class="lead">Whether you're curious about hydroponics, want to visit our farm, learn the basics, or start your own setup, we're here to help.</p>
+        </div>
+        <div class="btns"><a class="btn btn-primary" href="#visit">Visit Our Farm</a><a class="btn btn-secondary" href="#final">Talk to Us</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="s-footer">
+    <div class="wrap">
+      <div class="f-grid">
+        <div>
+          <a class="brand" href="#top" aria-label="V Dhankude Farm home">
+            <svg class="logo-inverse" viewBox="0 0 199.6 39" aria-hidden="true"><use href="#vdf-full"/></svg>
+          </a>
+          <p class="f-desc">Helping people understand, learn and start hydroponic farming through education, farm visits, training and setup support.</p>
+        </div>
+        <div><h4>Explore</h4><ul><li><a href="#about">About</a></li><li><a href="#what">Hydroponics</a></li><li><a href="#visit">Our Farm</a></li><li><a href="#training">Training</a></li><li><a href="#setup">Farm Setup</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li>[PHONE]</li><li>[EMAIL]</li><li>WhatsApp: [PHONE]</li><li>[SOCIAL_LINKS]</li></ul></div>
+        <div><h4>Visit</h4><ul><li>[LOCATION]</li><li><a href="#visit">Schedule a farm visit</a></li></ul></div>
+      </div>
+      <div class="f-bottom"><span>© 2026 V Dhankude Farm. All rights reserved.</span><span>Privacy · Terms</span></div>
+    </div>
+  </footer>
+</div>
+</div>
+</div>
+
+<script>
+(function () {
+  var site = document.getElementById('site');
+  var kitBtns = document.getElementById('kit-btns');
+  var tabs = document.querySelectorAll('.seg button');
+  function setDir(d, save) {
+    if (d !== 'a' && d !== 'b') d = 'a';
+    site.setAttribute('data-dir', d);
+    kitBtns.setAttribute('data-dir', d);
+    document.body.setAttribute('data-dir', d);
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.set === d)); });
+    if (save) { try { localStorage.setItem('hp-dir', d); } catch (e) {} }
+  }
+  var initial = (location.hash || '').replace('#', '');
+  if (initial !== 'a' && initial !== 'b') { try { initial = localStorage.getItem('hp-dir') || 'a'; } catch (e) { initial = 'a'; } }
+  setDir(initial, false);
+  tabs.forEach(function (t) { t.addEventListener('click', function () { setDir(t.dataset.set, true); }); });
+
+  var btn = document.getElementById('menu-btn');
+  var nav = document.getElementById('mobile-nav');
+  btn.addEventListener('click', function () {
+    var open = nav.getAttribute('data-open') !== 'true';
+    nav.setAttribute('data-open', String(open));
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) { nav.setAttribute('data-open', 'false'); btn.setAttribute('aria-expanded', 'false'); } });
+})();
+</script>

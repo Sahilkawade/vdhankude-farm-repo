@@ -1,0 +1,33 @@
+/*
+ * BRAND PRIMITIVES: the only raw colour, font and shape values in the app.
+ * Source: V Dhankude Farm logo and stationery (docs/design/brand-source).
+ * Components never use these directly; they use the semantic tokens in styles/theme.css.
+ * Rebranding = change the values here (and the files in ./assets).
+ */
+:root {
+  /* Logo colours */
+  --brand-forest: #00381b;
+  --brand-green: #004b23;
+  --brand-leaf: #009e3c;
+  --brand-lime: #99ce13;
+  --brand-graphite: #454646;
+
+  /* Neutrals tuned to the greens (Direction A · Rooted) */
+  --brand-ground: #f7f9f4;
+  --brand-surface: #ffffff;
+  --brand-tint: #eef5e4;
+  --brand-ink: #1e2a22;
+  --brand-ink-muted: #536156;
+  --brand-line: #dce5d6;
+  --brand-on-forest: #e9f2ea;
+  --brand-on-forest-muted: #a8c2ae;
+
+  /* Typography: Montserrat is the closest free match to the logo lettering */
+  --brand-font-display: 'Montserrat Variable', system-ui, 'Segoe UI', sans-serif;
+  --brand-font-body: 'Manrope Variable', system-ui, 'Segoe UI', sans-serif;
+
+  /* Shape */
+  --brand-radius-control: 999px;
+  --brand-radius-card: 18px;
+  --brand-radius-media: 22px;
+}

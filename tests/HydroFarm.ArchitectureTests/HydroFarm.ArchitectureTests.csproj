@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\HydroFarm.Application\HydroFarm.Application.csproj" />
+    <ProjectReference Include="..\..\src\HydroFarm.Domain\HydroFarm.Domain.csproj" />
+    <ProjectReference Include="..\..\src\HydroFarm.Infrastructure\HydroFarm.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\HydroFarm.Repositories\HydroFarm.Repositories.csproj" />
+    <ProjectReference Include="..\..\src\HydroFarm.Services\HydroFarm.Services.csproj" />
+    <ProjectReference Include="..\..\src\HydroFarm.WebApi\HydroFarm.WebApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetArchTest.Rules" />
+    <PackageReference Include="xunit.v3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+</Project>

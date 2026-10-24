@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- DTOs, application models, interfaces, validators and application exceptions. -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\HydroFarm.Domain\HydroFarm.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+</Project>

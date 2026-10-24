@@ -1,0 +1,78 @@
+/*
+ * SEMANTIC TOKENS. Components use only these. Values map to brand primitives (brand/tokens.css)
+ * so a rebrand never touches component CSS.
+ */
+:root {
+  /* Surfaces */
+  --color-bg: var(--brand-ground);
+  --color-surface: var(--brand-surface);
+  --color-surface-tint: var(--brand-tint);
+  --color-surface-inverse: var(--brand-forest);
+
+  /* Text */
+  --color-text: var(--brand-ink);
+  --color-text-muted: var(--brand-ink-muted);
+  --color-heading: var(--brand-forest);
+  --color-text-inverse: var(--brand-on-forest);
+  --color-text-inverse-muted: var(--brand-on-forest-muted);
+
+  /* Actions and accents. Lime and leaf are for marks and fills, never body text on light surfaces. */
+  --color-primary: var(--brand-green);
+  --color-primary-hover: var(--brand-forest);
+  --color-on-primary: var(--brand-surface);
+  --color-accent: var(--brand-lime);
+  --color-accent-strong: var(--brand-leaf);
+  --color-on-accent: var(--brand-forest);
+  --color-eyebrow: var(--brand-leaf);
+  --color-border: var(--brand-line);
+  --color-border-inverse: rgb(255 255 255 / 0.16);
+  --color-focus: var(--brand-leaf);
+
+  /* Typography */
+  --font-display: var(--brand-font-display);
+  --font-body: var(--brand-font-body);
+  --font-weight-display: 700;
+  --tracking-display: -0.02em;
+  --fs-h1: clamp(2.375rem, 1.55rem + 3.4vw, 4.25rem);
+  --fs-h2: clamp(1.75rem, 1.3rem + 1.9vw, 2.75rem);
+  --fs-h3: clamp(1.15rem, 1.05rem + 0.4vw, 1.375rem);
+  --fs-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.78rem;
+  --lh-tight: 1.08;
+  --lh-body: 1.6;
+
+  /* Shape */
+  --radius-control: var(--brand-radius-control);
+  --radius-card: var(--brand-radius-card);
+  --radius-media: var(--brand-radius-media);
+
+  /* Layout */
+  --container-max: 1200px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section-space: clamp(56px, 8vw, 104px);
+  --header-height: 78px;
+  --control-height: 50px;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Motion */
+  --duration-fast: 180ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (max-width: 560px) {
+  :root {
+    --fs-body: 1rem;
+    --header-height: 66px;
+  }
+}

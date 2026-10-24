@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/HydroFarm.Application/HydroFarm.Application.csproj" />
+    <Project Path="src/HydroFarm.Domain/HydroFarm.Domain.csproj" />
+    <Project Path="src/HydroFarm.Infrastructure/HydroFarm.Infrastructure.csproj" />
+    <Project Path="src/HydroFarm.Repositories/HydroFarm.Repositories.csproj" />
+    <Project Path="src/HydroFarm.Services/HydroFarm.Services.csproj" />
+    <Project Path="src/HydroFarm.WebApi/HydroFarm.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/HydroFarm.ArchitectureTests/HydroFarm.ArchitectureTests.csproj" />
+    <Project Path="tests/HydroFarm.IntegrationTests/HydroFarm.IntegrationTests.csproj" />
+    <Project Path="tests/HydroFarm.UnitTests/HydroFarm.UnitTests.csproj" />
+  </Folder>
+</Solution>

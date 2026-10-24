@@ -1,0 +1,5 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Entities, enums and domain constants. Must not reference any other project or package. -->
+
+</Project>

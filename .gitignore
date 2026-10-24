@@ -1,5 +1,28 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+﻿# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+TestResults/
+*.trx
 
-/.vs/
+# Node / frontend
+node_modules/
+build/
+dist/
+.react-router/
+*.tsbuildinfo
+npm-debug.log*
+
+# Environment files (keep the example)
+.env
+.env.*
+!.env.example
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
